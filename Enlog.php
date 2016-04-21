@@ -22,6 +22,7 @@ class Enlog extends Component
 	public $url;
 	public $name;
 	public $pass;
+  public $isTest = true;
 
   /**
    * 
@@ -54,7 +55,7 @@ class Enlog extends Component
 
 		$jsonRequest = json_encode($request);
 
-		$ctx = stream_context_create([
+    $ctx_options = [
 			'http' => [
 				'method'  => 'POST',
 				'header'  =>	'Content-Type: application/json-rpc' . "\r\n".
@@ -62,12 +63,17 @@ class Enlog extends Component
 											'Rpc-Hash: '. $this->pass . "\r\n",
 				'content' => $jsonRequest
 			],
-			"ssl"=> [
+		];
+    
+    if( $this->isTest ) {
+      $ctx_options['ssl'] = [
         "verify_peer"=>false,
         "verify_peer_name"=>false,
 				'allow_self_signed' => true,
-	    ]
-		]);
+	    ];
+    }
+    
+		$ctx = stream_context_create( $ctx_options );
 
 		$jsonResponse = '';
 		$jsonResponse = file_get_contents($this->url, false, $ctx);
