@@ -31,10 +31,11 @@ main.php:
 ...
 'components' => [
 	'enlog' => [
-    'class' => 'shinomontaz\Enlog',
-		'url' =>	'https://api.enlog.net',
-		'name' =>	'YOUR ENLOG USER NAME',
-		'pass' =>	'YOUR ENLOG USER PASS',
+		'class'		=> 'shinomontaz\Enlog',
+		'url'		=> 'https://api.enlog.net',
+		'name'		=> 'YOUR ENLOG USER NAME',
+		'pass'		=> 'YOUR ENLOG USER PASS',
+		'isTest'	=> false
 	],
 	...
 ```
