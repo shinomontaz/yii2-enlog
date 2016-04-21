@@ -1,0 +1,9 @@
+.idea
+nbproject
+/nbproject/private/
+.buildpath
+.project
+.settings
+Thumbs.db
+composer.lock
+composer.phar
