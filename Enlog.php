@@ -40,7 +40,7 @@ class Enlog extends Component
    * 
    * @param string $method
    * @param array $params
-   * @return integer
+   * @return string
    * @throws \Exception
    */
 	public function request( $method, $params = [] )
@@ -82,7 +82,7 @@ class Enlog extends Component
 			throw new \Exception( \yii\helpers\VarDumper::dumpAsString($jsonResponse) );
 		}
 		else if( $jsonResponse->result && !isset( $jsonResponse->result->error ) ) {
-			return $jsonResponse->result->task;
+			return $jsonResponse->result;
 		}
 		else {
 			throw new \Exception( $jsonResponse->result->error );
