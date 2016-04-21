@@ -25,12 +25,24 @@ class Enlog extends Component
 
   /**
    * 
-   * @param type $method
-   * @param type $params
-   * @return type
+   * @param string $name
+   * @param string $pass
+   * @return \shinomontaz\Enlog
+   */
+  public function auth( $name, $pass ) {
+		$this->name = $name;
+		$this->pass = $pass;
+		return $this;
+	}
+  
+  /**
+   * 
+   * @param string $method
+   * @param array $params
+   * @return integer
    * @throws \Exception
    */
-	public function request( $method, $params )
+	public function request( $method, $params = [] )
 	{
 		// create payment
 		$request = [
