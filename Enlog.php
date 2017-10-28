@@ -84,7 +84,7 @@ class Enlog extends Component
 		else if( $jsonResponse->result && !isset( $jsonResponse->result->error ) ) {
 			return $jsonResponse->result;
 		}
-		else {
+    else if( $jsonResponse->result && isset( $jsonResponse->result->error ) ) {
 			throw new \Exception( $jsonResponse->result->error );
 		}
 	}
